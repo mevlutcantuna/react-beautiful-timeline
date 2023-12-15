@@ -23,6 +23,10 @@
     "preview": "vite preview",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "./src/**/*.{ts,tsx,js,jsx}": "eslint --fix",
+    "./src/**/*.{ts,tsx,js,jsx,css}": "prettier --write"
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

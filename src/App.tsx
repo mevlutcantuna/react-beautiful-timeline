@@ -1,12 +1,7 @@
 import "./App.css";
 
 function App() {
-  return (
-    <>
-      <input />
-      dsa
-    </>
-  );
+  return <></>;
 }
 
 export default App;
