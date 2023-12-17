@@ -1,3 +1,4 @@
-import ReactBeautifulTimeline from "./components/BeautifulTimeline";
+import BeautifulTimeline from "./components/Timeline";
+import BeautifulTimelineItem from "./components/TimelineItem";
 
-export default ReactBeautifulTimeline;
+export { BeautifulTimeline, BeautifulTimelineItem };

@@ -5,13 +5,21 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
+    "prettier"
   ],
   "ignorePatterns": ["dist", ".eslintrc"],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react-refresh", "jsx-a11y", "unused-imports"],
+  "parserOptions": {
+    "tsconfigRootDir": "./",
+    "project": ["./tsconfig.json"],
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react-refresh", "jsx-a11y", "unused-imports","@typescript-eslint"],
   "rules": {
     "no-unused-vars": "warn",
-    "@typescript-eslint/no-unused-vars": "warn"
+    "@typescript-eslint/no-unused-vars": "warn",
   }
 }

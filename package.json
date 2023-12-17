@@ -17,8 +17,9 @@
     }
   },
   "scripts": {
-    "dev": "rm -rf ./dist && tsc && vite build --watch",
+    "dev": "vite",
     "build": "tsc && vite build",
+    "build-watch": "rm -rf ./dist && tsc && vite build --watch",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}' && prettier . --write './src/**/*.{ts,tsx,js,jsx,css}'",
     "preview": "vite preview",
     "prepare": "husky install"
@@ -28,6 +29,7 @@
     "./src/**/*.{ts,tsx,js,jsx,css}": "prettier --write"
   },
   "dependencies": {
+    "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
