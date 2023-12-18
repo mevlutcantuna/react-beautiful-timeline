@@ -10,8 +10,8 @@ interface TimelineDotProps {
 
 const TimelineDot = ({ dotColor, dotIcon, dotStyle }: TimelineDotProps) => {
   const timelineCtx = useContext<TimelineContextType | null>(TimelineContext);
-  const countOfTimelineEl = timelineCtx ? timelineCtx.countOfTimelineEl : "";
-  const animationDuration = timelineCtx ? timelineCtx.animationDuration : "";
+  const countOfTimelineEl = timelineCtx?.countOfTimelineEl;
+  const animationDuration = timelineCtx?.animationDuration;
   const timelineDot = document.getElementsByClassName("timeline-dot");
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
