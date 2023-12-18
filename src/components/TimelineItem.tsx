@@ -1,3 +1,4 @@
+import React from "react";
 import { CSSProperties } from "react";
 import TimelineDot from "./TimelineDot";
 

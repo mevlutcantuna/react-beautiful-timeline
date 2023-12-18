@@ -1,3 +1,4 @@
+import React from "react";
 import Timeline from "./components/Timeline";
 import TimelineItem from "./components/TimelineItem";
 import reactSvg from "./assets/react.svg";

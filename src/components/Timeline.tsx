@@ -1,3 +1,4 @@
+import React from "react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import Line from "./Line";
 import { TimelineContext } from "../store/TimelineContext";
@@ -22,7 +23,7 @@ const Timeline = ({
 }: BeautifulTimelineProps) => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [countOfTimelineEl, setCountOfTimelineEl] = useState(0);
-
+  console.log(type);
   useEffect(() => {
     const count = timelineRef.current ? timelineRef.current.children.length : 0;
     setCountOfTimelineEl(count);

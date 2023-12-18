@@ -1,3 +1,4 @@
+import React from "react";
 import { CSSProperties, useContext, useEffect, useRef } from "react";
 import { TimelineContext, TimelineContextType } from "../store/TimelineContext";
 

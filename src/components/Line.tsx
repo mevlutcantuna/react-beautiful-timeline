@@ -1,3 +1,4 @@
+import React from "react";
 import { CSSProperties, useRef } from "react";
 import useIsInViewport from "../hooks/useIsInViewport";
 
