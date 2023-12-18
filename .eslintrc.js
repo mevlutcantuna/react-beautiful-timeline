@@ -1,6 +1,5 @@
 export default [
   {
-    type: "module",
     root: true,
     env: { browser: true, es2020: true },
     extends: [

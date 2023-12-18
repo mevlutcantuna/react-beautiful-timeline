@@ -20,7 +20,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build-watch": "rm -rf ./dist && tsc && vite build --watch",
-    "lint": "eslint './src/**/*.{ts,tsx,js,jsx}' && prettier . --write './src/**/*.{ts,tsx,js,jsx,css}'",
+    "lint": "eslint --fix './src/**/*.{ts,tsx,js,jsx}' && prettier . --write './src/**/*.{ts,tsx,js,jsx,css}'",
     "preview": "vite preview",
     "prepare": "husky install"
   },
