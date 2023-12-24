@@ -1,5 +1,4 @@
-import React from "react";
-import { CSSProperties, useEffect, useRef, useState } from "react";
+import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import Line from "./Line";
 import { TimelineContext } from "../store/TimelineContext";
 
@@ -23,15 +22,38 @@ const Timeline = ({
 }: BeautifulTimelineProps) => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [countOfTimelineEl, setCountOfTimelineEl] = useState(0);
-  console.log(type);
+  const timelineItemContents = document.getElementsByClassName(
+    "beautiful-timeline-item-content-opposite",
+  );
+
   useEffect(() => {
     const count = timelineRef.current ? timelineRef.current.children.length : 0;
     setCountOfTimelineEl(count);
   }, [timelineRef]);
 
+  const maxHeightOfTimelineItemsContent = useMemo(() => {
+    let maxHeight = 0;
+    for (let i = 0; i < timelineItemContents.length; i++) {
+      if (maxHeight < timelineItemContents[i].clientHeight) {
+        maxHeight = timelineItemContents[i].clientHeight;
+      }
+    }
+
+    return maxHeight;
+  }, [timelineItemContents.length]);
+
   return (
-    <TimelineContext.Provider value={{ countOfTimelineEl, animationDuration }}>
-      <div className="relative">
+    <TimelineContext.Provider
+      value={{
+        countOfTimelineEl,
+        animationDuration,
+        animation,
+      }}
+    >
+      <div
+        className="relative"
+        style={{ paddingTop: `${maxHeightOfTimelineItemsContent}px` }}
+      >
         <Line
           activeLineStyle={activeLineStyle}
           passiveLineStyle={passiveLineStyle}
