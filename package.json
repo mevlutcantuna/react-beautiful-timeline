@@ -1,7 +1,9 @@
 {
   "name": "react-beautiful-timeline",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.1",
+  "author": "Mevlüt Can Tuna",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -14,7 +16,8 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./dist/style.css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",
@@ -29,6 +32,10 @@
     "./src/**/*.{ts,tsx,js,jsx,css}": "prettier --write"
   },
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
