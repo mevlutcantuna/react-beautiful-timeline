@@ -1,6 +1,6 @@
 {
   "name": "react-beautiful-timeline",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/index.umd.js",
