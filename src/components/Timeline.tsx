@@ -25,7 +25,7 @@ const Timeline = ({
   const timelineItemContents = document.getElementsByClassName(
     "beautiful-timeline-item-content-opposite",
   );
-
+  console.log(type);
   useEffect(() => {
     const count = timelineRef.current ? timelineRef.current.children.length : 0;
     setCountOfTimelineEl(count);
