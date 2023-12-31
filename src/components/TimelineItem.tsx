@@ -2,6 +2,7 @@ import { CSSProperties, useContext, useEffect, useRef, useState } from "react";
 import TimelineDot from "./TimelineDot";
 import { TimelineContext } from "../store/TimelineContext";
 import { v4 as uuidv4 } from "uuid";
+import useWindowDimensions from "../hooks/useWindowDimentions";
 
 export interface TimelineItemProps {
   dotColor?: string;
@@ -22,6 +23,7 @@ const TimelineItem = ({
   const setOppositeHeights = timelineCtx?.setOppositeHeights;
   const contentRef = useRef<HTMLDivElement>(null);
   const [componentId, setComponentId] = useState("");
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     const id = uuidv4();
@@ -55,7 +57,7 @@ const TimelineItem = ({
         }
       });
     }
-  }, [place, setOppositeHeights, componentId]);
+  }, [place, setOppositeHeights, componentId, width]);
 
   return (
     <div

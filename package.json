@@ -1,7 +1,7 @@
 {
   "name": "react-beautiful-timeline",
   "private": false,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Mevlüt Can Tuna",
   "license": "MIT",
   "type": "module",
