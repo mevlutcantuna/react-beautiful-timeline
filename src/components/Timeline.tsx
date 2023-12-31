@@ -1,11 +1,12 @@
 import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import Line from "./Line";
 import { TimelineContext } from "../store/TimelineContext";
+import useWindowDimensions from "../hooks/useWindowDimentions";
 
 interface BeautifulTimelineProps {
   type?: "vertical" | "horizantol";
   cardClassName?: string;
-  children?: string | JSX.Element | JSX.Element[];
+  children?: JSX.Element[];
   animation?: boolean;
   activeLineStyle?: CSSProperties;
   passiveLineStyle?: CSSProperties;
@@ -25,11 +26,12 @@ const Timeline = ({
   const timelineItemContents = document.getElementsByClassName(
     "beautiful-timeline-item-content-opposite",
   );
-  console.log(type);
+  const { width } = useWindowDimensions();
+
   useEffect(() => {
-    const count = timelineRef.current ? timelineRef.current.children.length : 0;
+    const count = children ? children.length : 0;
     setCountOfTimelineEl(count);
-  }, [timelineRef]);
+  }, [children]);
 
   const maxHeightOfTimelineItemsContent = useMemo(() => {
     let maxHeight = 0;
@@ -38,9 +40,8 @@ const Timeline = ({
         maxHeight = timelineItemContents[i].clientHeight;
       }
     }
-
     return maxHeight;
-  }, [timelineItemContents.length]);
+  }, [timelineItemContents.length, width, countOfTimelineEl]);
 
   return (
     <TimelineContext.Provider

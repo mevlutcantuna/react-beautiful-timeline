@@ -67,7 +67,6 @@ function App() {
         </TimelineItem>
         <TimelineItem
           dotStyle={{ width: "20px", height: "20px", top: "-10px" }}
-          place="opposite"
         >
           <div className="flex flex-col items-center justify-center px-3 py-4">
             <h3 className="text-2xl">Timeline 1</h3>

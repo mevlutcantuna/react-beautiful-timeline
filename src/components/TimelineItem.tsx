@@ -18,7 +18,9 @@ const TimelineItem = ({
 }: TimelineItemProps) => {
   return (
     <div
-      className="flex-1 relative"
+      className={`flex-1 relative ${
+        place === "opposite" ? "timeline-opposite-wrapper" : ""
+      }`}
       style={place === "opposite" ? { height: "0" } : {}}
     >
       <TimelineDot dotStyle={dotStyle} dotIcon={dotIcon} dotColor={dotColor} />
