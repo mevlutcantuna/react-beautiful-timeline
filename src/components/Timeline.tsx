@@ -14,7 +14,6 @@ interface BeautifulTimelineProps {
 }
 
 const Timeline = ({
-  type,
   children,
   animation = true,
   activeLineStyle,
@@ -23,12 +22,10 @@ const Timeline = ({
 }: BeautifulTimelineProps) => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [countOfTimelineEl, setCountOfTimelineEl] = useState(0);
+  const { width } = useWindowDimensions();
   const timelineItemContents = document.getElementsByClassName(
     "beautiful-timeline-item-content-opposite",
   );
-  const { width } = useWindowDimensions();
-
-  console.log(type);
 
   useEffect(() => {
     const count = children ? children.length : 0;
@@ -43,6 +40,7 @@ const Timeline = ({
       }
     }
     return maxHeight;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timelineItemContents.length, width, countOfTimelineEl]);
 
   return (
