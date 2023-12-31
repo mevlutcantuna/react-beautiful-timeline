@@ -54,7 +54,7 @@ const Timeline = ({
       }}
     >
       <div
-        className="relative"
+        className="relative min-w-fit	"
         style={{ paddingTop: `${maxHeightOfTimelineItemsContent}px` }}
       >
         <Line
