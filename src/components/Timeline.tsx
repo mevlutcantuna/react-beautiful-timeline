@@ -28,6 +28,8 @@ const Timeline = ({
   );
   const { width } = useWindowDimensions();
 
+  console.log(type);
+
   useEffect(() => {
     const count = children ? children.length : 0;
     setCountOfTimelineEl(count);
