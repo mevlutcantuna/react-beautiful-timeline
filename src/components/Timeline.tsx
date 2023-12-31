@@ -13,6 +13,12 @@ interface BeautifulTimelineProps {
   animationDuration?: number;
 }
 
+export interface OppositeHeights {
+  height: number;
+  place: "opposite" | "normal";
+  id: string;
+}
+
 const Timeline = ({
   children,
   animation = true,
@@ -26,6 +32,9 @@ const Timeline = ({
   const timelineItemContents = document.getElementsByClassName(
     "beautiful-timeline-item-content-opposite",
   );
+  const [oppositeHeights, setOppositeHeights] = useState<OppositeHeights[]>([]);
+
+  console.log(oppositeHeights);
 
   useEffect(() => {
     const count = children ? children.length : 0;
@@ -34,14 +43,18 @@ const Timeline = ({
 
   const maxHeightOfTimelineItemsContent = useMemo(() => {
     let maxHeight = 0;
-    for (let i = 0; i < timelineItemContents.length; i++) {
-      if (maxHeight < timelineItemContents[i].clientHeight) {
-        maxHeight = timelineItemContents[i].clientHeight;
+    for (let i = 0; i < oppositeHeights.length; i++) {
+      if (
+        maxHeight < oppositeHeights[i].height &&
+        oppositeHeights[i].place === "opposite"
+      ) {
+        maxHeight = oppositeHeights[i].height;
       }
     }
     return maxHeight;
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timelineItemContents.length, width, countOfTimelineEl]);
+  }, [timelineItemContents.length, width, countOfTimelineEl, oppositeHeights]);
 
   return (
     <TimelineContext.Provider
@@ -49,6 +62,8 @@ const Timeline = ({
         countOfTimelineEl,
         animationDuration,
         animation,
+        oppositeHeights,
+        setOppositeHeights,
       }}
     >
       <div

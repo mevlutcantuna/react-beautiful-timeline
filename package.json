@@ -1,7 +1,7 @@
 {
   "name": "react-beautiful-timeline",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Mevlüt Can Tuna",
   "license": "MIT",
   "type": "module",
@@ -33,7 +33,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.1"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -43,6 +44,7 @@
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
+    "@types/uuid": "^9.0.7",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
