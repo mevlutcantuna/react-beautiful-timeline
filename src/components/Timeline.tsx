@@ -2,9 +2,10 @@ import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import Line from "./Line";
 import { TimelineContext } from "../store/TimelineContext";
 import useWindowDimensions from "../hooks/useWindowDimentions";
+import { TimelineItemProps } from "./TimelineItem";
 
 interface BeautifulTimelineProps {
-  type?: "vertical" | "horizantol";
+  type?: "vertical" | "horizontal";
   cardClassName?: string;
   children?: JSX.Element[];
   animation?: boolean;
@@ -14,12 +15,18 @@ interface BeautifulTimelineProps {
 }
 
 export interface OppositeHeights {
+  width: number;
   height: number;
   place: "opposite" | "normal";
   id: string;
+  dotSize: {
+    width: string | undefined | number;
+    height: string | undefined | number;
+  };
 }
 
 const Timeline = ({
+  type = "horizontal",
   children,
   animation = true,
   activeLineStyle,
@@ -29,12 +36,7 @@ const Timeline = ({
   const timelineRef = useRef<HTMLDivElement>(null);
   const [countOfTimelineEl, setCountOfTimelineEl] = useState(0);
   const { width } = useWindowDimensions();
-  const timelineItemContents = document.getElementsByClassName(
-    "beautiful-timeline-item-content-opposite",
-  );
   const [oppositeHeights, setOppositeHeights] = useState<OppositeHeights[]>([]);
-
-  console.log(oppositeHeights);
 
   useEffect(() => {
     const count = children ? children.length : 0;
@@ -54,7 +56,7 @@ const Timeline = ({
     return maxHeight;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timelineItemContents.length, width, countOfTimelineEl, oppositeHeights]);
+  }, [width, countOfTimelineEl, oppositeHeights, type]);
 
   return (
     <TimelineContext.Provider
@@ -64,11 +66,30 @@ const Timeline = ({
         animation,
         oppositeHeights,
         setOppositeHeights,
+        type,
       }}
     >
       <div
-        className="relative min-w-fit	"
-        style={{ paddingTop: `${maxHeightOfTimelineItemsContent}px` }}
+        className="relative min-w-fit	w-fit ease-linear duration-[50ms]"
+        style={
+          type === "horizontal"
+            ? { paddingTop: `${maxHeightOfTimelineItemsContent}px` }
+            : {
+                paddingTop:
+                  children &&
+                  (children[0].props as TimelineItemProps).dotStyle?.height
+                    ? `${
+                        Number(
+                          (
+                            (children[0].props as TimelineItemProps).dotStyle
+                              ?.height as string
+                          ).replace(/[a-zA-Z]/g, ""),
+                        ) / 2
+                      }px`
+                    : "6px",
+                paddingLeft: `${timelineRef.current?.clientWidth}px`,
+              }
+        }
       >
         <Line
           activeLineStyle={activeLineStyle}
@@ -76,8 +97,15 @@ const Timeline = ({
           animation={animation}
           animationDuration={animationDuration}
         />
-
-        <div ref={timelineRef} className="flex">
+        <div
+          ref={timelineRef}
+          className="flex"
+          style={
+            type === "horizontal"
+              ? { flexDirection: "row" }
+              : { flexDirection: "column" }
+          }
+        >
           <>{children}</>
         </div>
       </div>

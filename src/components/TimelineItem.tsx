@@ -1,4 +1,11 @@
-import { CSSProperties, useContext, useEffect, useRef, useState } from "react";
+import {
+  CSSProperties,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import TimelineDot from "./TimelineDot";
 import { TimelineContext } from "../store/TimelineContext";
 import { v4 as uuidv4 } from "uuid";
@@ -20,7 +27,9 @@ const TimelineItem = ({
   children,
 }: TimelineItemProps) => {
   const timelineCtx = useContext(TimelineContext);
+  const oppositeHeights = timelineCtx?.oppositeHeights;
   const setOppositeHeights = timelineCtx?.setOppositeHeights;
+  const type = timelineCtx?.type;
   const contentRef = useRef<HTMLDivElement>(null);
   const [componentId, setComponentId] = useState("");
   const { width } = useWindowDimensions();
@@ -30,6 +39,11 @@ const TimelineItem = ({
     setComponentId(id);
   }, []);
 
+  const dotSize = useMemo(() => {
+    const item = oppositeHeights?.filter((item) => item.id === componentId);
+    return item && item[0]?.dotSize;
+  }, [componentId, oppositeHeights]);
+
   useEffect(() => {
     if (contentRef.current && setOppositeHeights && componentId !== "") {
       setOppositeHeights((prev) => {
@@ -37,18 +51,28 @@ const TimelineItem = ({
           return [
             ...prev,
             {
+              width: contentRef.current?.clientWidth as number,
               height: contentRef.current?.clientHeight as number,
               place: place === "opposite" ? "opposite" : "normal",
               id: componentId,
+              dotSize: {
+                width: dotStyle?.width,
+                height: dotStyle?.height,
+              },
             },
           ];
         } else {
           return [...prev].map((item) => {
             if (componentId === item.id) {
               return {
+                width: contentRef.current?.clientWidth as number,
                 height: contentRef.current?.clientHeight as number,
                 place: place === "opposite" ? "opposite" : "normal",
                 id: componentId,
+                dotSize: {
+                  width: dotStyle?.width,
+                  height: dotStyle?.height,
+                },
               };
             } else {
               return item;
@@ -57,22 +81,39 @@ const TimelineItem = ({
         }
       });
     }
-  }, [place, setOppositeHeights, componentId, width]);
+  }, [place, setOppositeHeights, componentId, width, dotStyle, type]);
 
   return (
     <div
       className={`flex-1 relative ${
-        place === "opposite" ? "timeline-opposite-wrapper" : ""
+        place === "opposite"
+          ? "beautiful-timeline-opposite-wrapper"
+          : "beautiful-timeline-wrapper"
       }`}
-      style={place === "opposite" ? { height: "0" } : {}}
+      style={
+        place === "opposite" && type === "horizontal" ? { height: "0" } : {}
+      }
     >
-      <TimelineDot dotStyle={dotStyle} dotIcon={dotIcon} dotColor={dotColor} />
+      <TimelineDot
+        dotSize={dotSize}
+        dotStyle={dotStyle}
+        dotIcon={dotIcon}
+        dotColor={dotColor}
+      />
       <div
         ref={contentRef}
         className={`${
-          place === "opposite" ? "beautiful-timeline-item-content-opposite" : ""
+          place === "opposite"
+            ? "beautiful-timeline-item-content-opposite"
+            : "beautiful-timeline-item-content"
         }`}
-        style={place === "opposite" ? { transform: "translateY(-100%)" } : {}}
+        style={
+          place === "opposite"
+            ? type === "horizontal"
+              ? { transform: "translateY(-100%)" }
+              : { transform: "translateX(-100%)" }
+            : {}
+        }
       >
         {children}
       </div>

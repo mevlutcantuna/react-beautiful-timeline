@@ -6,15 +6,16 @@ function App() {
   return (
     <div className="mx-40">
       <Timeline
+        type="horizontal"
         animation={true}
         activeLineStyle={{ backgroundColor: "blue" }}
         passiveLineStyle={{ backgroundColor: "red" }}
       >
         <TimelineItem
-          dotStyle={{ width: "20px", height: "20px", top: "-10px" }}
           dotIcon={<img src={reactSvg} alt="reactSvg" />}
           place="opposite"
           dotColor="#3b4d3f"
+          dotStyle={{ width: "20px", height: "20px", top: "-10px" }}
         >
           <div className="flex flex-col items-center justify-center px-3 py-4">
             <h3 className="text-2xl">Timeline 1</h3>
