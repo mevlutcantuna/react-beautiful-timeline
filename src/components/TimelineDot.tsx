@@ -1,4 +1,4 @@
-import { CSSProperties, useContext, useEffect, useMemo, useRef } from "react";
+import { CSSProperties, useContext, useEffect, useRef } from "react";
 import { TimelineContext, TimelineContextType } from "../store/TimelineContext";
 import { divedeHalfNumberValueInString } from "../utils";
 
