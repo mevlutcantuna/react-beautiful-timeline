@@ -62,7 +62,7 @@ const Line = ({
               }
             : { width: "1px", ...activeLineStyle }
         }
-        className="w-[1px] bg-red-400 z-10 absolute"
+        className="w-[1px] bg-yellow-400 z-10 absolute"
       ></div>
     </div>
   );

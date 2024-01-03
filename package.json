@@ -23,22 +23,18 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build-watch": "rm -rf ./dist && tsc && vite build --watch",
-    "lint": "eslint --fix './src/**/*.{ts,tsx,js,jsx}' && prettier . --write './src/**/*.{ts,tsx,js,jsx,css}'",
+    "lint": "eslint --fix './lib/**/*.{ts,tsx,js,jsx}' && prettier . --write './lib/**/*.{ts,tsx,js,jsx,css}'",
     "preview": "vite preview",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "./src/**/*.{ts,tsx,js,jsx}": "eslint --fix",
-    "./src/**/*.{ts,tsx,js,jsx,css}": "prettier --write"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "uuid": "^9.0.1"
+    "./lib/**/*.{ts,tsx,js,jsx}": "eslint --fix",
+    "./lib/**/*.{ts,tsx,js,jsx,css}": "prettier --write"
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
