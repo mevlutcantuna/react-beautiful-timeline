@@ -4,18 +4,19 @@ import reactSvg from "./assets/react.svg";
 
 function App() {
   return (
-    <div className="mx-40">
+    <div className="mx-10 my-10">
       <Timeline
-        type="horizontal"
+        type="vertical"
         animation={true}
         activeLineStyle={{ backgroundColor: "blue" }}
         passiveLineStyle={{ backgroundColor: "red" }}
       >
         <TimelineItem
           dotIcon={<img src={reactSvg} alt="reactSvg" />}
-          place="opposite"
           dotColor="#3b4d3f"
           dotStyle={{ width: "20px", height: "20px", top: "-10px" }}
+          dotText={<h1>223</h1>}
+          place="opposite"
         >
           <div className="flex flex-col items-center justify-center px-3 py-4">
             <h3 className="text-2xl">Timeline 1</h3>
@@ -39,6 +40,7 @@ function App() {
           dotStyle={{ width: "20px", height: "20px", top: "-10px" }}
           dotIcon={<img src={reactSvg} alt="reactSvg" />}
           dotColor="#3b327a"
+          dotText={<h1>223</h1>}
         >
           <div className="flex flex-col items-center justify-center px-3 py-4">
             <h3 className="text-2xl">Timeline 2</h3>
@@ -54,8 +56,8 @@ function App() {
           </div>
         </TimelineItem>
         <TimelineItem
+          dotText={<h1>fsdfs</h1>}
           dotStyle={{ width: "20px", height: "20px", top: "-10px" }}
-          place="opposite"
           dotColor="#bc6989"
         >
           <div className="flex flex-col items-center justify-center px-3 py-4">

@@ -67,13 +67,16 @@ const Timeline = ({
         oppositeHeights,
         setOppositeHeights,
         type,
+        lengthOfChildren: countOfTimelineEl,
       }}
     >
       <div
-        className="relative min-w-fit	w-fit ease-linear duration-[50ms]"
+        className="relative min-w-fit	w-fit flex"
         style={
           type === "horizontal"
-            ? { paddingTop: `${maxHeightOfTimelineItemsContent}px` }
+            ? {
+                paddingTop: `${maxHeightOfTimelineItemsContent}px`,
+              }
             : {
                 paddingTop:
                   children &&
@@ -87,26 +90,35 @@ const Timeline = ({
                         ) / 2
                       }px`
                     : "6px",
-                paddingLeft: `${timelineRef.current?.clientWidth}px`,
               }
         }
       >
-        <Line
-          activeLineStyle={activeLineStyle}
-          passiveLineStyle={passiveLineStyle}
-          animation={animation}
-          animationDuration={animationDuration}
-        />
-        <div
-          ref={timelineRef}
-          className="flex"
-          style={
-            type === "horizontal"
-              ? { flexDirection: "row" }
-              : { flexDirection: "column" }
-          }
-        >
-          <>{children}</>
+        {maxHeightOfTimelineItemsContent > 0 && (
+          <div
+            className="h-full invisible"
+            style={type === "horizontal" ? { display: "none" } : {}}
+          >
+            {children}
+          </div>
+        )}
+        <div>
+          <Line
+            activeLineStyle={activeLineStyle}
+            passiveLineStyle={passiveLineStyle}
+            animation={animation}
+            animationDuration={animationDuration}
+          />
+          <div
+            ref={timelineRef}
+            className="flex"
+            style={
+              type === "horizontal"
+                ? { flexDirection: "row" }
+                : { flexDirection: "column" }
+            }
+          >
+            <>{children}</>
+          </div>
         </div>
       </div>
     </TimelineContext.Provider>

@@ -17,6 +17,7 @@ export interface TimelineItemProps {
   dotIcon?: any;
   dotStyle?: CSSProperties;
   children?: string | JSX.Element | JSX.Element[];
+  dotText?: any;
 }
 
 const TimelineItem = ({
@@ -25,6 +26,7 @@ const TimelineItem = ({
   dotIcon,
   dotStyle,
   children,
+  dotText,
 }: TimelineItemProps) => {
   const timelineCtx = useContext(TimelineContext);
   const oppositeHeights = timelineCtx?.oppositeHeights;
@@ -85,7 +87,7 @@ const TimelineItem = ({
 
   return (
     <div
-      className={`flex-1 relative ${
+      className={`flex-1 relative beautiful-timeline-item ${
         place === "opposite"
           ? "beautiful-timeline-opposite-wrapper"
           : "beautiful-timeline-wrapper"
@@ -99,6 +101,8 @@ const TimelineItem = ({
         dotStyle={dotStyle}
         dotIcon={dotIcon}
         dotColor={dotColor}
+        dotText={dotText}
+        place={place}
       />
       <div
         ref={contentRef}

@@ -8,6 +8,7 @@ export interface TimelineContextType {
   oppositeHeights: OppositeHeights[];
   setOppositeHeights: React.Dispatch<React.SetStateAction<OppositeHeights[]>>;
   type: "vertical" | "horizontal";
+  lengthOfChildren: number;
 }
 
 export const TimelineContext = createContext<TimelineContextType | null>(null);
