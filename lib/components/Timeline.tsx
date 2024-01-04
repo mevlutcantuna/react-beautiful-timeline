@@ -6,12 +6,12 @@ import { TimelineItemProps } from "./TimelineItem";
 
 interface BeautifulTimelineProps {
   type?: "vertical" | "horizontal";
-  cardClassName?: string;
   children?: JSX.Element[];
   animation?: boolean;
   activeLineStyle?: CSSProperties;
   passiveLineStyle?: CSSProperties;
   animationDuration?: number;
+  responsiveWidth?: number;
 }
 
 export interface OppositeHeights {
@@ -32,11 +32,24 @@ const Timeline = ({
   activeLineStyle,
   passiveLineStyle,
   animationDuration = 6000,
+  responsiveWidth,
 }: BeautifulTimelineProps) => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [countOfTimelineEl, setCountOfTimelineEl] = useState(0);
   const { width } = useWindowDimensions();
   const [oppositeHeights, setOppositeHeights] = useState<OppositeHeights[]>([]);
+
+  const responsiveType = useMemo(() => {
+    if (responsiveWidth) {
+      if (width >= responsiveWidth) {
+        return type;
+      } else {
+        return "vertical";
+      }
+    } else {
+      return type;
+    }
+  }, [responsiveWidth, type, width]);
 
   useEffect(() => {
     const count = children ? children.length : 0;
@@ -66,14 +79,14 @@ const Timeline = ({
         animation,
         oppositeHeights,
         setOppositeHeights,
-        type,
+        type: responsiveType,
         lengthOfChildren: countOfTimelineEl,
       }}
     >
       <div
         className="relative min-w-fit	w-fit flex"
         style={
-          type === "horizontal"
+          responsiveType === "horizontal"
             ? {
                 paddingTop: `${maxHeightOfTimelineItemsContent}px`,
               }
@@ -96,7 +109,7 @@ const Timeline = ({
         {maxHeightOfTimelineItemsContent > 0 && (
           <div
             className="h-full invisible"
-            style={type === "horizontal" ? { display: "none" } : {}}
+            style={responsiveType === "horizontal" ? { display: "none" } : {}}
           >
             {children}
           </div>
@@ -112,7 +125,7 @@ const Timeline = ({
             ref={timelineRef}
             className="flex"
             style={
-              type === "horizontal"
+              responsiveType === "horizontal"
                 ? { flexDirection: "row" }
                 : { flexDirection: "column" }
             }

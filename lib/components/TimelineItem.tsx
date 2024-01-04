@@ -115,7 +115,11 @@ const TimelineItem = ({
           place === "opposite"
             ? type === "horizontal"
               ? { transform: "translateY(-100%)" }
-              : { transform: "translateX(-100%)" }
+              : {
+                  transform: "translateX(-100%)",
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }
             : {}
         }
       >

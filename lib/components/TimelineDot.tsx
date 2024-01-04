@@ -54,21 +54,25 @@ const TimelineDot = ({
     <div
       ref={ref}
       style={{
-        backgroundColor: dotColor ?? "#7DD3FC",
         ...dotStyle,
+        backgroundColor: dotColor
+          ? dotColor === "none"
+            ? ""
+            : dotColor
+          : "#7DD3FC",
         opacity: animation ? 0.75 : 1,
         left:
           type === "vertical"
             ? dotSize?.width
               ? `-${divedeHalfNumberValueInString(dotSize?.width as string)}`
               : "-6px"
-            : "0",
+            : "auto",
         top:
           type === "horizontal"
             ? dotSize?.height
               ? `-${divedeHalfNumberValueInString(dotSize?.height as string)}`
               : "-6px"
-            : 0,
+            : "",
       }}
       className={
         "timeline-dot w-3 h-3 rounded-full absolute left-0 top-[-6px] z-20 flex items-center justify-center transition-opacity ease-in duration-500 "
@@ -78,20 +82,20 @@ const TimelineDot = ({
       {dotText && (
         <div
           ref={dotTextRef}
-          className="absolute w-fit"
+          className="absolute w-max"
           style={{
             top:
               type === "horizontal"
                 ? place === "opposite"
                   ? `${dotTextRef.current?.clientHeight}px`
                   : `-${dotTextRef.current?.clientHeight}px`
-                : 0,
+                : "",
             left:
               type === "vertical"
                 ? place === "opposite"
                   ? `${ref.current?.clientWidth}px`
                   : `-${dotTextRef.current?.clientWidth}px`
-                : 0,
+                : "",
           }}
         >
           {dotText}
