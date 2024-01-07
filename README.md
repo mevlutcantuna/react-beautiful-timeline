@@ -75,7 +75,7 @@ Below are the available configuration options for the component:
 
 ## 🤝Contributing
 
-We welcome contributions! If you find a bug or have an idea for improvement, please open an issue or submit a pull request on GitHub.
+We welcome contributions! If you find a bug or have an idea for improvement, please open an issue or submit a pull request on [Github](https://github.com/mevlutcantuna/react-beautiful-timeline).
 
 1. [Fork it](https://github.com/mevlutcantuna/react-beautiful-timeline/fork)
 2. Create your feature branch (`git checkout -b new-feature`)

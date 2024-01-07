@@ -1,8 +1,8 @@
 {
   "name": "react-beautiful-timeline",
-  "description": "A Modern Full Responsive React Timeline",
+  "description": "Modern responsive React timeline with animations",
   "private": false,
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Mevlüt Can Tuna",
   "license": "MIT",
   "type": "module",
