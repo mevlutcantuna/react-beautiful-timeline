@@ -4,6 +4,8 @@ React Beautiful Timeline is a resposive timeline with animations that allows use
 
 [Demo](https://stackblitz.com/edit/react-beautiful-timeline?file=src%2FApp.tsx)
 
+![React Beautiful Timeline Demo](https://github.com/mevlutcantuna/react-beautifult-timeline/assets/demo.gif)
+
 ## Features
 
 - 🚥&nbsp; **Versatile Display**: Render timelines in both `Horizontal` and `Vertical` modes, providing flexibility in presentation.
