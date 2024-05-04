@@ -4,7 +4,7 @@ React Beautiful Timeline is a resposive timeline with animations that allows use
 
 [Demo](https://stackblitz.com/edit/react-beautiful-timeline?file=src%2FApp.tsx)
 
-![React Beautiful Timeline Demo]([https://github.com/mevlutcantuna/react-beautifult-timeline/assets/demo.gif](https://github.com/mevlutcantuna/react-beautiful-timeline/blob/main/assets/demo.gif))
+![React Beautiful Timeline Demo](https://github.com/mevlutcantuna/react-beautiful-timeline/blob/main/assets/demo.gif)
 
 ## Features
 
