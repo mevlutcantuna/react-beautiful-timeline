@@ -75,7 +75,7 @@ Below are the available configuration options for the component:
 | `dotStyle` | `CSSProperties`            | CSS properties to customize the style of the dot                   |
 | `dotText`  | `any`                      | Custom content to be placed above or beside the dot                |
 
-## 🤝Contributing
+## 🤝 Contributing
 
 We welcome contributions! If you find a bug or have an idea for improvement, please open an issue or submit a pull request on [Github](https://github.com/mevlutcantuna/react-beautiful-timeline).
 
